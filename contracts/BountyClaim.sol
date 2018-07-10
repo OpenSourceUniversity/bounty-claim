@@ -21,11 +21,11 @@ contract BountyClaim is Ownable {
         allowance[msg.sender] = 0;
     }
 
-    function withdraw(uint256 amount) onlyOwner {
+    function withdraw(uint256 amount) external onlyOwner {
         ERC20(_tokenAddress).transfer(msg.sender, amount);
     }
 
-    function changeAllowances(address[] addresses, uint256[] values) onlyOwner returns (uint256) {
+    function changeAllowances(address[] addresses, uint256[] values) external onlyOwner returns (uint256) {
         uint256 i = 0;
         while (i < addresses.length) {
             allowance[addresses[i]] = values[i];
